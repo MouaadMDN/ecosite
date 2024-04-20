@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{{url_for('static', filename='assets/css/bootstrap.min.css')}}" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{{url_for('static', filename='assets/css/style.css')}}" />
+</head>
+
+<body>
+  <section class="all-content">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">ECO SUD</a>
+      </div>
+    </nav>
+
+    <!--HEADER-->
+    <header id="main-nav" class="py-2 bg-primary text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h1><i class="fas fa-user"></i> Eco sud Administrateur</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!--END HEADER-->
+
+    <!--ACTIONS-->
+    <section id="actions" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div class="row"></div>
+      </div>
+    </section>
+    <!--END ACTIONS-->
+
+    <!-- LOGIN-->
+    <section id="login">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="text-center">Connexion au compte</h4>
+              </div>
+
+              <div class="card-body">
+                <form action="{{url_for('login')}}" method="post">
+                  <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input name="email" type="text" class="form-control" />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">PassMot de passe</label>
+                    <input name="password" type="password" class="form-control" />
+                  </div>
+                  <input type="submit" class="btn btn-primary btn-block" value="Login" />
+                  {{message}}
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- END LOGIN-->
+  </section>
+  <!--FOOTER-->
+
+  <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="lead text-center">
+            Copyright &copy; <span id="year"></span>
+            Blogen
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--END FOOTER-->
+</body>
+
+</html>
+<script src="{{url_for('static', filename='assets/js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/js/js.js')}}"></script>

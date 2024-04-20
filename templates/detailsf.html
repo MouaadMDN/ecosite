@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Fournisseur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='assets/css/style.css' ) }}" />
+
+</head>
+
+<body>
+  <section class="all-content">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+      <div class="container">
+        <a href="{{url_for('index')}}" class="navbar-brand">ECO SUD</a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav">
+            <li class="nav-item px-2">
+              <a href="{{url_for('dashboard')}}" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="{{url_for('articles')}}" class="nav-link">Articles</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="{{url_for('detailsf')}}" class="nav-link active">Fournisseur</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="{{url_for('email')}}" class="nav-link">Email</a>
+            </li>
+            </li>
+              <li class="nav-item px-2">
+               <a href="{{url_for('messages')}}" class="nav-link">Messages</a>
+             </li>
+            <li class="nav-item px-2">
+               <a href="{{url_for('purchases')}}" class="nav-link ">Commandes</a>
+             </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown mr-3">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <i class="fas fa-user"></i> Bienvenue {{session.username}}
+              </a>
+              <div class="dropdown-menu">
+                <a href="{{url_for('profile')}}" class="dropdown-item">
+                  <i class="fas fa-user-circle"></i> Profile</a>
+                  <a href="settings.html" class="dropdown-item">
+                    <i class="fas fa-cog"></i> Settings</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url_for('logout')}}" class="nav-link">
+                    <i class="fas fa-user-times"></i> Déconnexion
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!--HEADER-->
+        <header id="main-nav" class="py-2 bg-success text-white">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h1><i class="fas fa-folder"></i> Fournisseur</h1>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!--END HEADER-->
+
+        <!--SEARCH-->
+        <section id="search" class="py-4 mb-4 bg-light">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 ml-auto">
+                <form action="{{url_for('searchd')}}" method="post">
+                <div class="input-group">
+                  <input type="text" name="search_f" class="form-control" placeholder="Rechercher des fournisseur...">
+                  <div class="input-group-append">
+                    <button class="btn btn-success">Rechercher</button>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--END SEARCH-->
+
+        <!-- POSTS-->
+        <section id="categories">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Fournisseur</h4>
+                  </div>
+                  <table class="table table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Specialite</th>
+                        <th>Ville</th>
+                        <th>Telephone</th>
+                        <th></th>
+                      </tr>
+                      <tbody>
+                  {% for fournisseur in show_all_fournisseur%}
+                        <tr>
+                          <td>{{fournisseur.id_fornisseure}}</td>
+                          <td>{{fournisseur.nom}}</td>
+                          <td>{{fournisseur.adresse}}</td>
+                          <td>{{fournisseur.specialite}}</td>
+                          <td>{{fournisseur.ville}}</td>
+                          <td>{{fournisseur.telephone}}</td>
+                          <td>
+                            <a href="{{url_for('editf', f_id=fournisseur.id_fornisseure )}}" class="btn btn-secondary">
+                              <i class="fas fa-angle-double-right"></i> Détails
+                            </a>
+                          </td>
+                        </tr>
+                  {% endfor %}
+                      </tbody>
+                    </thead>
+                  </table>
+
+                  <!--PAGINATION-->
+                  <!--END PAGINATION-->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- END POSTS-->
+      </section>
+      <!--FOOTER-->
+      <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <p class="lead text-center">
+                Copyright &copy; <span id="year"></span>
+                Blogen
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!--END FOOTER-->
+
+
+    </body>
+
+    </html>
+    <script src="{{ url_for('static', filename='assets/js/jquery-3.3.1.min.js' )}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js' )}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/js.js') }}"></script>
